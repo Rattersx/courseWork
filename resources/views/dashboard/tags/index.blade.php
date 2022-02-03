@@ -1,11 +1,11 @@
 <x-base-layout>
     
     <div class="space-x-4">
-        <x-jet-nav-link href="/categories">
+        <x-jet-nav-link href="/tags">
             Index
         </x-jet-nav-link>
     
-        <x-jet-nav-link href="/categories/create">
+        <x-jet-nav-link href="/tags/create">
             Create
         </x-jet-nav-link>
     </div>
@@ -31,10 +31,6 @@
                             </th>
 
                             <th class="px-2 py-3 text-xs tracking-wider text-left uppercase">
-                                Sub Categories
-                            </th>
-
-                            <th class="px-2 py-3 text-xs tracking-wider text-left uppercase">
                                 Created Date
                             </th>
 
@@ -49,47 +45,38 @@
                     </thead>
 
                     <tbody class="text-xs bg-dark-300">
-                        @foreach ($categories as $category)
+                        @foreach ($tags as $tag)
                         <tr>
                             <td class="px-2 py-4 whitespace-nowrap text-white-600" style="color: black; font-weight: 500;">
                             </td>
 
                             <td class="px-2 py-4 whitespace-nowrap text-white-600" style="color: black; font-weight: 500;">
-                                {{ $category->id }}
+                                {{ $tag->id }}
                             </td>
 
                             <td class="px-2 py-4 whitespace-nowrap text-white-600" style="color: black; font-weight: 500;">
-                                {{ $category->name }}
+                                {{ $tag->name }}
                             </td>
 
                             <td class="px-2 py-4 whitespace-nowrap text-white-600" style="color: black; font-weight: 500;">
-                                <ul class="flex">
-                                    @foreach ($category->subCategories as $subCategory)
-                                    <li class="px-2">{{ $subCategory->name }}, </li>
-                                        
-                                    @endforeach
-                                </ul>
+                                {{ $tag->created_at->format('m/d/y')}}
                             </td>
 
                             <td class="px-2 py-4 whitespace-nowrap text-white-600" style="color: black; font-weight: 500;">
-                                {{ $category->created_at->format('m/d/y')}}
-                            </td>
-
-                            <td class="px-2 py-4 whitespace-nowrap text-white-600" style="color: black; font-weight: 500;">
-                                {{ $category->updated_at->format('m/d/y') }}
+                                {{ $tag->updated_at->format('m/d/y') }}
                             </td>
 
                             <td class="px-2 py-4 text-sm text-gray-500 whitespace-nowrap">
 {{-- EDIT --}}
                                 <div class="flex justify-start space-x-1">
-                                    <a href=" {{route('categories.edit', $category)}} " class="p-1 border-2 border-white-500 rounded-md">
+                                    <a href=" {{route('tags.edit', $tag)}} " class="p-1 border-2 border-white-500 rounded-md">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 text-gray-500">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
                                     </a>
                                 
 {{-- DELETE --}}
-                                    <form action="{{route('categories.destroy', '$category')}}" method="POST">
+                                    <form action="{{route('tags.destroy', $tag)}}" method="POST">
                                         @csrf
                                         @method("Delete")
                                         <button type="submit" class="p-1 border-2 border-primary rounded-md">

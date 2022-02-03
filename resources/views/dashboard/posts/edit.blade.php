@@ -1,10 +1,10 @@
 <x-base-layout>
     <div class="space-x-4">
-        <x-jet-nav-link href="/categories">
+        <x-jet-nav-link href="/posts">
             Index
         </x-jet-nav-link>
     
-        <x-jet-nav-link href="/categories/create">
+        <x-jet-nav-link href="/posts/create">
             Create
         </x-jet-nav-link>
     </div>
@@ -14,7 +14,7 @@
             <div class="overflow-hidden bg-dark-300 shadow-x1 sm:rounded-lg">
 
                 <div class="p-4">
-                    <form action="{{route('categories.update', ['category' => $category])}}" method="POST">
+                    <form action="{{route('posts.update', ['post' => $post])}}" method="POST">
                         @csrf
                         @method('PUT')
 

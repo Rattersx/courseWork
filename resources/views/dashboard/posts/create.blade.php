@@ -1,10 +1,10 @@
 <x-base-layout>
     <div class="space-x-4">
-        <x-jet-nav-link href="/categories">
-            Index
+        <x-jet-nav-link href="/posts">
+            Posts
         </x-jet-nav-link>
     
-        <x-jet-nav-link href="/categories/create">
+        <x-jet-nav-link href="/posts/create">
             Create
         </x-jet-nav-link>
     </div>
@@ -14,9 +14,18 @@
             <div class="overflow-hidden bg-dark-300 shadow-x1 sm:rounded-lg">
 
                 <div class="p-4">
-                    <form action="{{route('categories.update', ['category' => $category])}}" method="POST">
+                    <form action="{{route('posts.store')}}" method="POST">
                         @csrf
-                        @method('PUT')
+
+                        <div>
+                            <small class="mb-4 text-white-500">Note: Select Parent only for subcategory</small>
+                            <select name="parent_id" id="" class="w-full mb-6 border-none bg-dark-300">
+                                <option value="">Create new parent category</option>
+                                @foreach ($posts as $post)
+                                    <option value="{{$post->id}}">{{ $post->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div>
                             <x-jet-label for="name" class="text-white-600" value="{{ __('Name') }}" />
@@ -26,7 +35,7 @@
                         </div>
 
                         <x-jet-button class="ml-4 mt-12">
-                            {{ __('Update') }}
+                            {{ __('Create') }}
                         </x-jet-button>
                     </form>
                 </div>
