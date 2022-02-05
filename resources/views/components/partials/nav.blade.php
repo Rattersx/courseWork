@@ -5,7 +5,7 @@
         <li><a href="/dashboard" :active="request()->routeIs('dashboard.index')">Dashboard</a></li>
         <li><a href="/categories">Categories</a></li>
         <li><a href="/tags">Tags</a></li>
-        <li><a href="#">Posts</a></li>
+        <li><a href="/posts">Posts</a></li>
         <li><a href="#"></a></li>
         <li><a href="#"></a></li>
         <li><a href="#">Log-in</a></li>
