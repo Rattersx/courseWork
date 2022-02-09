@@ -18,7 +18,7 @@
         <div class="mx-auto max-w-7x1 sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-x1 sm:rounded-lg">
                 
-                LIVEWIRE TABLE
+                <livewire:post.index>
 
             </div>
         </div>
